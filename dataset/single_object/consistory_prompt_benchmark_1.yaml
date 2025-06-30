@@ -1,0 +1,126 @@
+{
+    "inanimate": [
+        {
+            "prompts": [
+                "A photo of A sticker of a cute corgi dog, on a student's laptop",
+                "A photo of A sticker of a cute corgi dog, amidst an action-packed skate session",
+                "A photo of A sticker of a cute corgi dog, showing its teeth",
+                "A photo of A sticker of a cute corgi dog, at a live music gig",
+                "A photo of A sticker of a cute corgi dog, at an international airport"
+            ],
+            "concept_token": "dog",
+            "index": 121,
+            "superclass": "inanimate",
+            "desc_type": "detailed",
+            "subject": "A sticker of a cute corgi dog",
+            "settings_types": [
+                "background_changing",
+                "pose_changing",
+                "pose_changing",
+                "pose_changing",
+                "pose_changing"
+            ],
+            "settings": [
+                "on a student's laptop",
+                "amidst an action-packed skate session",
+                "adding character to urban signage",
+                "at a live music gig",
+                "at an international airport"
+            ],
+            "style": "A photo of"
+        }
+    ],
+    "fantasy": [
+        {
+            "prompts": [
+                "A watercolor illustration of A fairy, wearing gossamer wings",
+                "A watercolor illustration of A fairy, frolicking in the air",
+                "A watercolor illustration of A fairy, wearing a crown of twigs",
+                "A watercolor illustration of A fairy, near a shimmering brook",
+                "A watercolor illustration of A fairy, dancing in moonlight"
+            ],
+            "concept_token": "fairy",
+            "index": 91,
+            "superclass": "fantasy",
+            "desc_type": "generic",
+            "subject": "A fairy",
+            "settings_types": [
+                "wearing_items",
+                "pose_changing",
+                "wearing_items",
+                "background_changing",
+                "pose_changing"
+            ],
+            "settings": [
+                "wearing gossamer wings",
+                "frolicking in the air",
+                "wearing a crown of twigs",
+                "near a shimmering brook",
+                "dancing in moonlight"
+            ],
+            "style": "A watercolor illustration of"
+        }
+    ],
+    "animals": [
+        {
+            "prompts": [
+                "A photo of A happy hedgehog, eating a big piece of cheese",
+                "A photo of A happy hedgehog, in a garden",
+                "A photo of A happy hedgehog, being held by a caretaker",
+                "A photo of A happy hedgehog, dressed in a festive outfit",
+                "A photo of A happy hedgehog, in an autumn forest"
+            ],
+            "concept_token": "hedgehog",
+            "index": 46,
+            "superclass": "animals",
+            "desc_type": "generic",
+            "subject": "A happy hedgehog",
+            "settings_types": [
+                "pose_changing",
+                "background_changing",
+                "pose_changing",
+                "wearing_items",
+                "background_changing"
+            ],
+            "settings": [
+                "eating a big piece of cheese",
+                "in a garden",
+                "being held by a caretaker",
+                "dressed in a festive outfit",
+                "in an autumn forest"
+            ],
+            "style": "A photo of"
+        }
+    ],
+    "humans": [
+        {
+            "prompts": [
+                "A photo of A woman, baking cookies",
+                "A photo of A woman, feeding seagulls",
+                "A photo of A woman, wearing a chef's hat and apron",
+                "A photo of A woman, dressed in a vintage 1950s outfit",
+                "A photo of A woman, on a city street in the 1950s"
+            ],
+            "concept_token": "woman",
+            "index": 2,
+            "superclass": "humans",
+            "desc_type": "generic",
+            "subject": "A woman",
+            "settings_types": [
+                "pose_changing",
+                "pose_changing",
+                "wearing_items",
+                "wearing_items",
+                "background_changing"
+            ],
+            "settings": [
+                "baking cookies",
+                "feeding seagulls",
+                "wearing a chef's hat and apron",
+                "dressed in a vintage 1950s outfit",
+                "on a city street in the 1950s"
+            ],
+            "style": "A photo of"
+        }
+    ]
+}
