@@ -1,8 +1,11 @@
+# Consistent image generation project
+
 ## 설명
-`dataset/single_object/consistory_prompt_benchmark.yaml` 파일의 prompts를 입력으로 사용하여 결과물을 만들어내는 코드입니다.
-
+이 코드는 `dataset/single_object/consistory_prompt_benchmark.yaml` 파일의 prompts를 입력으로 사용하여 이미지를 생성합니다.
+- 현재 baseline 코드는 한 번에 5개 prompt를 입력받아 5개의 결과물을 생성합니다.
+- 실행 시, 약 VRAM 18GB를 소모합니다. (A6000 GPU 기준)
+  
 ## 설치 방법
-
 ```bash
 conda env create --file environment.yml
 ```
@@ -11,9 +14,6 @@ conda env create --file environment.yml
 ```bash
 python python main_sdxl.py --output_dir "results_sdxl/test"
 ```
-
-### Run 
-`python main_sdxl.py`
 
 ## 파라미터
 - **`--seed`**: 실행 결과를 재현하는데 사용되는 값 (default: 42)
