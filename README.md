@@ -6,7 +6,7 @@
 - 현재 baseline 코드는 한 번에 5개 prompt를 입력받아 5개의 결과물을 생성합니다.
 - 실행 시, 약 VRAM 18GB를 소모합니다. (A6000 GPU 기준)
   
-## 설치 방법
+## 환경 설정
 ```bash
 conda env create --file environment.yml
 ```
