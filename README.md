@@ -2,6 +2,7 @@
 
 ## 설명
 이 코드는 `dataset/single_object/consistory_prompt_benchmark.yaml` 파일의 prompts를 입력으로 사용하여 이미지를 생성합니다.
+- 본 코드는 Stable Diffusion XL를 사용했습니다.
 - 현재 baseline 코드는 한 번에 5개 prompt를 입력받아 5개의 결과물을 생성합니다.
 - 실행 시, 약 VRAM 18GB를 소모합니다. (A6000 GPU 기준)
   
