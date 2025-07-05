@@ -162,6 +162,7 @@ class CustomSharedAttnXFormersAttnProcessor:
     
 def register_shared_attn(unet, attnstore):
     attn_procs = {}
+
     for i, name in enumerate(unet.attn_processors.keys()):
         if name.startswith("mid_block"):
             place_in_unet = f"mid_{i}"
@@ -171,15 +172,19 @@ def register_shared_attn(unet, attnstore):
             place_in_unet = f"down_{i}"
         else:
             continue
-        
-        if name.endswith("attn1.processor"):
+
+        if name.endswith("attn1.processor"):  # self-attention
             if name.startswith("up_blocks"):
-                attn_procs[name] = CustomSharedAttnXFormersAttnProcessor(place_in_unet, attnstore)
-            else:    
-                # print(f"hi")
-                attn_procs[name] = CustomAttnProcessor(place_in_unet, attnstore)    
+                # up_blocks.x 중 x가 1, 2일 때만 shared attention 적용
+                # name 예시: "up_blocks.2.attn1.processor"
+                block_idx = int(name.split(".")[1])
+                if block_idx in [1, 2]:  # 적용 범위 설정
+                    attn_procs[name] = CustomSharedAttnXFormersAttnProcessor(place_in_unet, attnstore)
+                else:
+                    attn_procs[name] = CustomAttnProcessor(place_in_unet, attnstore)
+            else:
+                attn_procs[name] = CustomAttnProcessor(place_in_unet, attnstore)
         else:
             attn_procs[name] = CustomAttnProcessor(place_in_unet, attnstore)
-    
+
     unet.set_attn_processor(attn_procs)
-    
