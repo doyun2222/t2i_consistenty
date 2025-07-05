@@ -161,9 +161,13 @@ class CustomSharedAttnXFormersAttnProcessor:
         
     
 def register_shared_attn(unet, attnstore):
+    # 새 attention processor들을 모아놓을 딕셔너리
     attn_procs = {}
 
+    # 기존 U-Net 내 등록된 모든 attention processor 이름 순회
     for i, name in enumerate(unet.attn_processors.keys()):
+        # 어떤 블록인지에 따라 위치 정보 태깅
+        # 이 정보는 shared attention 분석에 필요
         if name.startswith("mid_block"):
             place_in_unet = f"mid_{i}"
         elif name.startswith("up_blocks"):
@@ -173,18 +177,18 @@ def register_shared_attn(unet, attnstore):
         else:
             continue
 
-        if name.endswith("attn1.processor"):  # self-attention
-            if name.startswith("up_blocks"):
-                # up_blocks.x 중 x가 1, 2일 때만 shared attention 적용
-                # name 예시: "up_blocks.2.attn1.processor"
-                block_idx = int(name.split(".")[1])
-                if block_idx in [1, 2]:  # 적용 범위 설정
-                    attn_procs[name] = CustomSharedAttnXFormersAttnProcessor(place_in_unet, attnstore)
-                else:
-                    attn_procs[name] = CustomAttnProcessor(place_in_unet, attnstore)
-            else:
+        # attn1은 self-attention, attn2는 cross-attention
+        # 디코더(up_blocks)에만 shared attention을 사용하도록 설계
+        if name.endswith("attn1.processor"):# 셀프 어텐션 , 2는 크로스 어텐션(text )
+            if name.startswith("up_blocks"): #이게 디코더 블럭
+                attn_procs[name] = CustomSharedAttnXFormersAttnProcessor(place_in_unet, attnstore)
+            else:    
+                # print(f"hi")
                 attn_procs[name] = CustomAttnProcessor(place_in_unet, attnstore)
+
+        # 나머지는 일반 custom processor로 처리
         else:
             attn_procs[name] = CustomAttnProcessor(place_in_unet, attnstore)
 
+    # U-Net의 attention processor를 새롭게 교체 완료
     unet.set_attn_processor(attn_procs)
